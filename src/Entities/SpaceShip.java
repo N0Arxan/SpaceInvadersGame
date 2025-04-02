@@ -1,36 +1,40 @@
 package Entities;
 
+import Assets.Assets;
+
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class SpaceShip {
     private boolean GoingUp,GoingDown,GoingRight,GoingLeft;
     private int x,y;
-    private final int speed = 1;
-    private final int width = 10;
-    private final int height = 10;
+    private final int speed = 5;
+    private final int width = 48;
+    private final int height = 64;
+    private BufferedImage image = Assets.spaceShip;
 
-
-    public SpaceShip(int x, int y) {
+    public SpaceShip(int x, int y ) {
         this.x = x;
         this.y = y;
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.black);
         g.fillRect(x, y, width, height);
+        g.drawImage(image, x, y, null);
     }
 
     public void update() {
-        if (GoingUp) {
+        if (GoingUp && y > 560) {
             y -= speed;
         }
-        if (GoingDown) {
+        if (GoingDown && y < 735) {
             y += speed;
         }
-        if (GoingRight) {
+        if (GoingRight && x < 550) {
             x += speed;
         }
-        if (GoingLeft) {
+        if (GoingLeft && x > 0) {
             x -= speed;
         }
     }

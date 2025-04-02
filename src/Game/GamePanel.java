@@ -1,7 +1,6 @@
 package Game;
 
 import Entities.SpaceShip;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,7 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
     GamePanel() {
         setPreferredSize(new Dimension(600, 800));
         setLayout(null);
-        spaceShip = new SpaceShip(300 - 25, 750);
+        spaceShip = new SpaceShip(300 - 25, 735);
         setFocusable(true);
         requestFocusInWindow();
         keyInputHandler = new KeyInputHandler(this.spaceShip);
@@ -42,8 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
         double delta = (double) 1_000_000_000 / FPS;
         double nextDrawTime = System.nanoTime() + delta;
 
-        while (gameThread != null) {
-
+        while (gameThread.isAlive()) {
             spaceShip.update();
             repaint();
 
