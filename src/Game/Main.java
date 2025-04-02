@@ -6,14 +6,14 @@ import java.awt.*;
 
 public class Main extends JFrame {
 
-    public Main() throws HeadlessException {
+    public Main() {
         setTitle("Space Invaders");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(new GamePanel());
-        pack();
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
+        add(new GamePanel());
+        pack();
     }
     public static void main(String[] args) {
         new Main();

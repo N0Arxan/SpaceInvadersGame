@@ -14,41 +14,33 @@ public class KeyInputHandler extends KeyAdapter {
 
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        switch (keyCode) {
-            case KeyEvent.VK_UP:
-                spaceShip.setGoingUp(true);
-                break;
-            case KeyEvent.VK_DOWN:
-                spaceShip.setGoingDown(true);
-                break;
-            case KeyEvent.VK_LEFT:
-                spaceShip.setGoingLeft(true);
-                break;
-            case KeyEvent.VK_RIGHT:
-                spaceShip.setGoingRight(true);
-                break;
-            default:
-                break;
+        if (keyCode == KeyEvent.VK_RIGHT){
+            spaceShip.setGoingRight(true);
+        }
+        if (keyCode == KeyEvent.VK_LEFT) {
+            spaceShip.setGoingLeft(true);
+        }
+        if (keyCode == KeyEvent.VK_UP) {
+            spaceShip.setGoingUp(true);
+        }
+        if (keyCode == KeyEvent.VK_DOWN) {
+            spaceShip.setGoingDown(true);
         }
     }
 
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        switch (keyCode) {
-            case KeyEvent.VK_UP:
-                spaceShip.setGoingUp(false);
-                break;
-            case KeyEvent.VK_DOWN:
-                spaceShip.setGoingDown(false);
-                break;
-            case KeyEvent.VK_LEFT:
-                spaceShip.setGoingLeft(false);
-                break;
-            case KeyEvent.VK_RIGHT:
-                spaceShip.setGoingRight(false);
-                break;
-            default:
-                break;
+        if (keyCode == KeyEvent.VK_RIGHT){
+            spaceShip.setGoingRight(false);
+        }
+        if (keyCode == KeyEvent.VK_LEFT) {
+            spaceShip.setGoingLeft(false);
+        }
+        if (keyCode == KeyEvent.VK_UP) {
+            spaceShip.setGoingUp(false);
+        }
+        if (keyCode == KeyEvent.VK_DOWN) {
+            spaceShip.setGoingDown(false);
         }
     }
 

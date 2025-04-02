@@ -6,8 +6,8 @@ public class SpaceShip {
     private boolean GoingUp,GoingDown,GoingRight,GoingLeft;
     private int x,y;
     private final int speed = 1;
-    private final int width = 50;
-    private final int height = 50;
+    private final int width = 10;
+    private final int height = 10;
 
 
     public SpaceShip(int x, int y) {
@@ -21,7 +21,7 @@ public class SpaceShip {
     }
 
     public void update() {
-        if (GoingUp && y < 200 ) {
+        if (GoingUp) {
             y -= speed;
         }
         if (GoingDown) {
