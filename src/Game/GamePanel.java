@@ -1,24 +1,27 @@
 package Game;
 
-import Entities.SpaceShip;
+import Entities.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamePanel extends JPanel implements Runnable {
 
 
     private final int FPS = 60;
-    private final SpaceShip spaceShip;
+    private final SpaceShip spaceShip = new SpaceShip(300 - 25, 735);
     private final KeyInputHandler keyInputHandler;
+    private List<Laser> lasers = new ArrayList<>();
     Thread gameThread;
 
     GamePanel() {
         setPreferredSize(new Dimension(600, 800));
         setLayout(null);
-        spaceShip = new SpaceShip(300 - 25, 735);
         setFocusable(true);
         requestFocusInWindow();
-        keyInputHandler = new KeyInputHandler(this.spaceShip);
+        keyInputHandler = new KeyInputHandler(spaceShip, this);
         addKeyListener(keyInputHandler);
         stratGameLoop();
     }
@@ -28,12 +31,38 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         g.setColor(Color.black);
         g.fillRect(0, 0, getWidth(), getHeight());
+
         spaceShip.draw(g);
+
+        for (Laser laser : lasers) {
+            laser.draw(g);
+        }
     }
 
     public void stratGameLoop() {
         gameThread = new Thread(this);
         gameThread.start();
+    }
+
+    public void update() {
+        spaceShip.update();
+
+        for (Laser laser : lasers) {
+            laser.update();
+        }
+        removeLasers(lasers);
+    }
+
+    public SpaceShip getSpaceShip() {
+        return spaceShip;
+    }
+
+    public void addLaser(Laser laser) {
+        lasers.add(laser);
+    }
+
+    public void removeLasers(List<Laser> lasers) {
+        lasers.removeIf(laser -> laser.getY() < -10);
     }
 
     @Override
@@ -42,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
         double nextDrawTime = System.nanoTime() + delta;
 
         while (gameThread.isAlive()) {
-            spaceShip.update();
+            update();
             repaint();
 
             double remainingTime = (nextDrawTime - System.nanoTime()) / 1_000_000.0;
