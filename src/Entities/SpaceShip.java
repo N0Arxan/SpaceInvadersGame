@@ -43,7 +43,7 @@ public class SpaceShip extends Entity implements EntityInterface {
 
     @Override
     public void update() {
-        if (GoingUp && y > 560) {
+        if (GoingUp && y > 0) {
             y -= speed;
         }
         if (GoingDown && y < 735) {

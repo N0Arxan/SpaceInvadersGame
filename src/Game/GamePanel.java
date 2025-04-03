@@ -14,6 +14,7 @@ public class GamePanel extends JPanel implements Runnable {
     private final SpaceShip spaceShip = new SpaceShip(300 - 25, 735);
     private final KeyInputHandler keyInputHandler;
     private List<Laser> lasers = new ArrayList<>();
+    private List<Planet> planets = new ArrayList<>();
     Thread gameThread;
 
     GamePanel() {
@@ -22,6 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
         setFocusable(true);
         requestFocusInWindow();
         keyInputHandler = new KeyInputHandler(spaceShip, this);
+        planets.add(new Planet(225, 0));
         addKeyListener(keyInputHandler);
         stratGameLoop();
     }
@@ -37,6 +39,10 @@ public class GamePanel extends JPanel implements Runnable {
         for (Laser laser : lasers) {
             laser.draw(g);
         }
+
+        for (Planet planet : planets) {
+            planet.draw(g);
+        }
     }
 
     public void stratGameLoop() {
@@ -51,6 +57,10 @@ public class GamePanel extends JPanel implements Runnable {
             laser.update();
         }
         removeLasers(lasers);
+
+        for (Planet planet : planets) {
+            planet.update();
+        }
     }
 
     public SpaceShip getSpaceShip() {

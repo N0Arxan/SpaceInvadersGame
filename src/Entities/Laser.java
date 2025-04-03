@@ -22,7 +22,6 @@ public class Laser extends Entity implements EntityInterface {
     @Override
     public void update() {
         y -= speed;
-        System.out.println(y);
     }
 
 

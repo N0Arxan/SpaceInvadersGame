@@ -14,6 +14,7 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
+
     }
     public static void main(String[] args) {
         new Assets();
