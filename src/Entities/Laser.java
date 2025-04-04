@@ -6,6 +6,7 @@ public class Laser extends Entity implements EntityInterface {
 
 
     private int FrameCount = 0;
+    private boolean isDestroyed = false;
 
     public Laser(int x, int y) {
         super(x, y);
@@ -16,7 +17,7 @@ public class Laser extends Entity implements EntityInterface {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(Assets.LasersImages.getFirst(), x, y, null);
+        g.drawImage(Assets.lasersImages.getFirst(), x, y, null);
     }
 
     @Override

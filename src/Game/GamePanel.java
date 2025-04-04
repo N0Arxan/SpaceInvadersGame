@@ -12,6 +12,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     private final int FPS = 60;
     private final SpaceShip spaceShip = new SpaceShip(300 - 25, 735);
+    private final SpaceBg spaceBg = new SpaceBg(0,0,getWidth(),getHeight());
     private final KeyInputHandler keyInputHandler;
     private List<Laser> lasers = new ArrayList<>();
     private List<Planet> planets = new ArrayList<>();
@@ -31,15 +32,15 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.black);
+        g.setColor(Color.red);
         g.fillRect(0, 0, getWidth(), getHeight());
 
+        spaceBg.draw(g);
         spaceShip.draw(g);
 
         for (Laser laser : lasers) {
             laser.draw(g);
         }
-
         for (Planet planet : planets) {
             planet.draw(g);
         }

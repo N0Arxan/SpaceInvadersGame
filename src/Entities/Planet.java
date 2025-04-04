@@ -20,7 +20,7 @@ public class Planet extends Entity implements EntityInterface {
     public void draw(Graphics g) {
         g.setColor(Color.red);
         //g.fillOval(x, y, width, height);
-        g.drawImage(Assets.Plant.getFirst(), x, y, null);
+        g.drawImage(Assets.plants.getFirst(), x, y, null);
 
         g.drawImage(Assets.noisesOfPlanet.get(spriteNum), x, y, null);
         if (spriteNum == Assets.noisesOfPlanet.size() - 1) {

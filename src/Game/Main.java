@@ -12,6 +12,7 @@ public class Main extends JFrame {
         add(new GamePanel());
         pack();
         setLocationRelativeTo(null);
+        setDefaultLookAndFeelDecorated(true);
         setResizable(false);
         setVisible(true);
 
